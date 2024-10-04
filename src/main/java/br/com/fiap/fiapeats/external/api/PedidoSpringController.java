@@ -75,4 +75,38 @@ public class PedidoSpringController {
                         + "Solicitacao recebida [criarNovoPedido] ");
         return ResponseEntity.ok(pedidoController.listarPedidos());
     }
+
+    @GetMapping("/pagamento/{idPagamento}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(
+            summary = "Lista os pedidos filtrados por pagamento",
+            description = "Rota para listar todos os pedidos cadastrados filtrados por pagamento")
+    @ApiResponses(
+            value = {@ApiResponse(responseCode = "200", description = "Pedidos listados com sucesso!")})
+    public ResponseEntity<List<ListarPedidosResponse>> listarPedidosPorPagamento(@PathVariable Long idPagamento) {
+        ThreadContext.put(Constants.CORRELATION_ID, UUID.randomUUID().toString());
+        log.info(
+                "correlationId={"
+                        + ThreadContext.get(Constants.CORRELATION_ID)
+                        + "} "
+                        + "Solicitacao recebida [ListarPedidosPorPagamento] ");
+        return ResponseEntity.ok(pedidoController.listarPedidosPorPagamento(idPagamento));
+    }
+
+    @GetMapping("/{idPedido}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(
+            summary = "Buscar um pedido por id",
+            description = "Rota para listar pedido cadastrado filtrado por id")
+    @ApiResponses(
+            value = {@ApiResponse(responseCode = "200", description = "Pedido encontrado com sucesso!")})
+    public ResponseEntity<ListarPedidosResponse> listarPedidoPorId(@PathVariable String idPedido) {
+        ThreadContext.put(Constants.CORRELATION_ID, UUID.randomUUID().toString());
+        log.info(
+                "correlationId={"
+                        + ThreadContext.get(Constants.CORRELATION_ID)
+                        + "} "
+                        + "Solicitacao recebida [ListarPedidoPorId] ");
+        return ResponseEntity.ok(pedidoController.listarPedidosPorId(idPedido));
+    }
 }

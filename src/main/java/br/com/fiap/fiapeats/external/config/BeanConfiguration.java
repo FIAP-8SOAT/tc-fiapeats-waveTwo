@@ -14,6 +14,8 @@ import br.com.fiap.fiapeats.adapter.gateway.persistence.interfaces.ProdutoReposi
 import br.com.fiap.fiapeats.usecases.interfaces.in.cliente.CriarClienteUseCase;
 import br.com.fiap.fiapeats.usecases.interfaces.in.cliente.IdentificarClienteUseCase;
 import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.CriarPedidoUseCase;
+import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.ListarPedidoPorIdUseCase;
+import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.ListarPedidosPorPagamentoUseCase;
 import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.ListarPedidosUseCase;
 import br.com.fiap.fiapeats.usecases.interfaces.in.produto.*;
 import br.com.fiap.fiapeats.usecases.interfaces.out.categoria.CategoriaRepositoryGateway;
@@ -23,6 +25,8 @@ import br.com.fiap.fiapeats.usecases.interfaces.out.produto.ProdutoRepositoryGat
 import br.com.fiap.fiapeats.usecases.cliente.CriarClienteUseCaseImpl;
 import br.com.fiap.fiapeats.usecases.cliente.IdentificarClienteUseCaseImpl;
 import br.com.fiap.fiapeats.usecases.pedido.CriarPedidoUseCaseImpl;
+import br.com.fiap.fiapeats.usecases.pedido.ListarPedidoPorIdUseCaseImpl;
+import br.com.fiap.fiapeats.usecases.pedido.ListarPedidosPorPagamentoUseCaseImpl;
 import br.com.fiap.fiapeats.usecases.pedido.ListarPedidosUseCaseImpl;
 import br.com.fiap.fiapeats.usecases.produto.*;
 import org.springframework.context.annotation.Bean;
@@ -34,6 +38,16 @@ public class BeanConfiguration {
     @Bean
     public CriarPedidoUseCase criarPedidoUseCasePort(PedidoRepositoryGateway pedidoRepositoryGateway) {
         return new CriarPedidoUseCaseImpl(pedidoRepositoryGateway);
+    }
+
+    @Bean
+    public ListarPedidosPorPagamentoUseCase listarPedidosPorPagamentoUseCase(PedidoRepositoryGateway pedidoRepositoryGateway) {
+        return new ListarPedidosPorPagamentoUseCaseImpl(pedidoRepositoryGateway);
+    }
+
+    @Bean
+    public ListarPedidoPorIdUseCase listarPedidoPorIdUseCase(PedidoRepositoryGateway pedidoRepositoryGateway) {
+        return new ListarPedidoPorIdUseCaseImpl(pedidoRepositoryGateway);
     }
 
     @Bean
@@ -99,8 +113,10 @@ public class BeanConfiguration {
 
     @Bean
     public PedidoController pedidoController(CriarPedidoUseCase criarPedidoUseCase,
-                                             ListarPedidosUseCase listarPedidoUseCase) {
-        return new PedidoController(criarPedidoUseCase, listarPedidoUseCase);
+                                             ListarPedidosUseCase listarPedidoUseCase,
+                                             ListarPedidosPorPagamentoUseCase listarPedidosPorPagamentoUseCase,
+                                             ListarPedidoPorIdUseCase listarPedidoPorIdUseCase) {
+        return new PedidoController(criarPedidoUseCase, listarPedidoUseCase, listarPedidosPorPagamentoUseCase, listarPedidoPorIdUseCase);
     }
 
     @Bean

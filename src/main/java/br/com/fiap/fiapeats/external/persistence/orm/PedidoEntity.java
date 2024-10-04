@@ -37,5 +37,8 @@ public class PedidoEntity implements Serializable {
   @Column(name = "TEMPO_ESPERA", nullable = false)
   private int tempoEspera;
 
+  @Column(name = "ID_PAGAMENTO", nullable = false)
+  private Long idPagamento;
+
   @ManyToMany private Set<ProdutoEntity> produtos;
 }

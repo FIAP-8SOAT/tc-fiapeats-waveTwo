@@ -11,9 +11,10 @@ public class ListarPedidosResponse {
     private BigDecimal valor;
     private int tempoEspera;
     private LocalDateTime dataHoraCriacao;
+    private Long idPagamento;
     private List<ProdutoResponse> produtos;
 
-    public ListarPedidosResponse(String id, String cliCpf, Long idStatus, BigDecimal valor, int tempoEspera, LocalDateTime dataHoraCriacao, List<ProdutoResponse> produtos) {
+    public ListarPedidosResponse(String id, String cliCpf, Long idStatus, BigDecimal valor, int tempoEspera, LocalDateTime dataHoraCriacao,  Long idPagamento, List<ProdutoResponse> produtos) {
         this.id = id;
         this.cliCpf = cliCpf;
         this.idStatus = idStatus;
@@ -21,6 +22,7 @@ public class ListarPedidosResponse {
         this.tempoEspera = tempoEspera;
         this.dataHoraCriacao = dataHoraCriacao;
         this.produtos = produtos;
+        this.idPagamento = idPagamento;
     }
 
     public String getId() {
@@ -77,5 +79,13 @@ public class ListarPedidosResponse {
 
     public void setProdutos(List<ProdutoResponse> produtos) {
         this.produtos = produtos;
+    }
+
+    public Long getIdPagamento() {
+        return idPagamento;
+    }
+
+    public void setIdPagamento(Long idPagamento) {
+        this.idPagamento = idPagamento;
     }
 }
