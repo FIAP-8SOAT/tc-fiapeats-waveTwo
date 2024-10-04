@@ -14,6 +14,7 @@ public class Pedido {
   private Long idStatus;
   private LocalDateTime dataHoraCriacao;
   private int tempoEspera;
+  private Long idPagamento;
 
   public Pedido(
       UUID id,
@@ -22,7 +23,8 @@ public class Pedido {
       BigDecimal valor,
       Long idStatus,
       LocalDateTime dataHoraCriacao,
-      int tempoEspera) {
+      int tempoEspera,
+      Long idPagamento) {
     this.id = id;
     this.produtos = produtos;
     this.cliCpf = cliCpf;
@@ -30,6 +32,7 @@ public class Pedido {
     this.idStatus = idStatus;
     this.dataHoraCriacao = dataHoraCriacao;
     this.tempoEspera = tempoEspera;
+    this.idPagamento = idPagamento;
   }
 
   public Pedido() {}
@@ -88,5 +91,13 @@ public class Pedido {
 
   public void setTempoEspera(int tempoEspera) {
     this.tempoEspera = tempoEspera;
+  }
+
+  public Long getIdPagamento() {
+    return idPagamento;
+  }
+
+  public void setIdPagamento(Long idPagamento) {
+    this.idPagamento = idPagamento;
   }
 }

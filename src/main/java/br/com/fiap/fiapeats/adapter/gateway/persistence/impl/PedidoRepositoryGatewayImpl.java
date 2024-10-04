@@ -5,6 +5,7 @@ import br.com.fiap.fiapeats.domain.entities.Pedido;
 import br.com.fiap.fiapeats.usecases.interfaces.out.pedido.PedidoRepositoryGateway;
 
 import java.util.List;
+import java.util.UUID;
 
 public class PedidoRepositoryGatewayImpl implements PedidoRepositoryGateway {
 
@@ -22,5 +23,14 @@ public class PedidoRepositoryGatewayImpl implements PedidoRepositoryGateway {
     @Override
     public List<Pedido> listarPedidos() {
         return pedidoRepository.listarPedidos();
+    }
+    @Override
+    public List<Pedido> listarPedidosPorPagamento(Long idPagamento) {
+        return pedidoRepository.listarPedidosPorPagamento(idPagamento);
+    }
+
+    @Override
+    public Pedido listarPedidoPorId(String idPedido) {
+        return pedidoRepository.listarPedidoPorId(idPedido);
     }
 }

@@ -30,6 +30,7 @@ public class CriarPedidoUseCaseImpl implements CriarPedidoUseCase {
 
         pedido.setIdStatus(1L);
         pedido.setTempoEspera(10);
+        pedido.setIdPagamento(0L);
 
         return pedidoRepositoryGateway.salvarPedido(pedido);
     }
