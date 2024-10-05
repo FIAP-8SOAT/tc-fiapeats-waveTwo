@@ -78,7 +78,7 @@ public class PedidoSpringController {
         return ResponseEntity.ok(pedidoController.listarPedidos());
     }
 
-    @GetMapping("/pagamento/{idPagamento}")
+    @GetMapping("{idPagamento}/pagamento")
     @ResponseStatus(HttpStatus.OK)
     @Operation(
             summary = "Lista os pedidos filtrados por pagamento",
