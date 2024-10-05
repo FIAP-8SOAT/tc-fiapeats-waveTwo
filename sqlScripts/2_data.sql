@@ -29,7 +29,7 @@ VALUES ('d212192c-8155-440a-9eda-3d77732458bb', 'fa0f9dde-b305-407b-869c-7104585
 INSERT INTO PEDIDO_PRODUTOS(pedido_entity_id_pedido, produtos_id)
 VALUES ('6d597e32-62b5-4b1e-9696-eb794bbae188', 'fa0f9dde-b305-407b-869c-71045853dea8');
 
-INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
+INSERT INTO status_pedido (ID_STATUS, DESCRICAO)
 VALUES (1, 'Pendente');
 INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
 VALUES (2, 'Recebido');
@@ -42,7 +42,7 @@ VALUES (5, 'Finalizado');
 INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
 VALUES (6, 'Cancelado');
 
-INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
+INSERT INTO status_pagamento (ID_STATUS, DESCRICAO)
 VALUES (1, 'Pendente');
 INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
 VALUES (2, 'Aprovado');
