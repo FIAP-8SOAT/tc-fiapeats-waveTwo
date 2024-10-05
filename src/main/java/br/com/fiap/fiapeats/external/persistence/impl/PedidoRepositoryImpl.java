@@ -73,7 +73,7 @@ public class PedidoRepositoryImpl implements PedidoRepository {
         if(result.isPresent())
             return pedidoMapper.toPedidoFromEntity(result.get());
         else
-            return null; //TODO: Verificar como ajustar
+            return null;
     }
 
 }
