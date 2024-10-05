@@ -1,6 +1,8 @@
 package br.com.fiap.fiapeats.external.api;
 
 import br.com.fiap.fiapeats.adapter.controller.PedidoController;
+import br.com.fiap.fiapeats.domain.entities.Pedido;
+import br.com.fiap.fiapeats.external.api.contracts.request.AlterarStatusPedidoRequest;
 import br.com.fiap.fiapeats.usecases.dtos.CriarPedidoDTO;
 import br.com.fiap.fiapeats.external.api.mapper.PedidoMapper;
 import br.com.fiap.fiapeats.external.api.contracts.request.CriarPedidoRequest;
@@ -108,5 +110,15 @@ public class PedidoSpringController {
                         + "} "
                         + "Solicitacao recebida [ListarPedidoPorId] ");
         return ResponseEntity.ok(pedidoController.listarPedidosPorId(idPedido));
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<ListarPedidosResponse> alterarStatusPedido(@PathVariable String id, @RequestBody AlterarStatusPedidoRequest alterarStatusPedidoRequestDTO) {
+        try {
+            ListarPedidosResponse pedidoAtualizado = pedidoController.alterarStatusPedido(id, alterarStatusPedidoRequestDTO);
+            return ResponseEntity.ok(pedidoAtualizado);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

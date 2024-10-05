@@ -100,4 +100,5 @@ public class Pedido {
   public void setIdPagamento(Long idPagamento) {
     this.idPagamento = idPagamento;
   }
+
 }

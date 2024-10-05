@@ -13,4 +13,5 @@ public interface PedidoRepositoryGateway {
     List<Pedido> listarPedidosPorPagamento(Long idPagamento);
 
     Pedido listarPedidoPorId(String idPedido);
+
 }

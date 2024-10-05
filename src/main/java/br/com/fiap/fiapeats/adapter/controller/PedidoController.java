@@ -1,19 +1,14 @@
 package br.com.fiap.fiapeats.adapter.controller;
 
 import br.com.fiap.fiapeats.adapter.presenters.PedidoPresenter;
-import br.com.fiap.fiapeats.external.persistence.orm.PedidoEntity;
+import br.com.fiap.fiapeats.external.api.contracts.request.AlterarStatusPedidoRequest;
 import br.com.fiap.fiapeats.usecases.dtos.CriarPedidoDTO;
 import br.com.fiap.fiapeats.usecases.dtos.CriarPedidoResponse;
 import br.com.fiap.fiapeats.usecases.dtos.ListarPedidosResponse;
 import br.com.fiap.fiapeats.domain.entities.Pedido;
-import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.CriarPedidoUseCase;
-import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.ListarPedidoPorIdUseCase;
-import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.ListarPedidosPorPagamentoUseCase;
-import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.ListarPedidosUseCase;
+import br.com.fiap.fiapeats.usecases.interfaces.in.pedido.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 public class PedidoController {
 
@@ -25,11 +20,14 @@ public class PedidoController {
 
     private final ListarPedidoPorIdUseCase listarPedidosPorIdUseCase;
 
-    public PedidoController(CriarPedidoUseCase criarPedidoUseCase, ListarPedidosUseCase listarPedidosUseCase, ListarPedidosPorPagamentoUseCase listarPedidosPorPagamentoUseCase, ListarPedidoPorIdUseCase listarPedidosPorIdUseCase) {
+    private final AlterarStatusPedidoUseCase alterarStatusPedidoUseCase;
+
+    public PedidoController(CriarPedidoUseCase criarPedidoUseCase, ListarPedidosUseCase listarPedidosUseCase, ListarPedidosPorPagamentoUseCase listarPedidosPorPagamentoUseCase, ListarPedidoPorIdUseCase listarPedidosPorIdUseCase, AlterarStatusPedidoUseCase alterarStatusPedidoUseCase) {
         this.criarPedidoUseCase = criarPedidoUseCase;
         this.listarPedidosUseCase = listarPedidosUseCase;
         this.listarPedidosPorPagamentoUseCase = listarPedidosPorPagamentoUseCase;
         this.listarPedidosPorIdUseCase = listarPedidosPorIdUseCase;
+        this.alterarStatusPedidoUseCase = alterarStatusPedidoUseCase;
     }
 
     public CriarPedidoResponse criarNovoPedido(CriarPedidoDTO criarPedidoDTO) {
@@ -57,4 +55,10 @@ public class PedidoController {
         return PedidoPresenter.toListarPedidosResponse(pedido);
     }
 
+    public ListarPedidosResponse alterarStatusPedido(String id, AlterarStatusPedidoRequest status) {
+
+        Pedido pedido = alterarStatusPedidoUseCase.alterarStatusPedido(id, status.getStatus());
+
+        return PedidoPresenter.toListarPedidosResponse(pedido);
+    }
 }
