@@ -29,28 +29,16 @@ VALUES ('d212192c-8155-440a-9eda-3d77732458bb', 'fa0f9dde-b305-407b-869c-7104585
 INSERT INTO PEDIDO_PRODUTOS(pedido_entity_id_pedido, produtos_id)
 VALUES ('6d597e32-62b5-4b1e-9696-eb794bbae188', 'fa0f9dde-b305-407b-869c-71045853dea8');
 
-INSERT INTO status_pedido (ID_STATUS, DESCRICAO)
-VALUES (1, 'Pendente');
-INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
-VALUES (2, 'Recebido');
-INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
-VALUES (3, 'Em preparação');
-INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
-VALUES (4, 'Pronto');
-INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
-VALUES (5, 'Finalizado');
-INSERT INTO StatusPedido (ID_STATUS, DESCRICAO)
-VALUES (6, 'Cancelado');
+INSERT INTO status_pedido (DESCRICAO) VALUES ('Pendente');
+INSERT INTO status_pedido (DESCRICAO) VALUES ('Recebido');
+INSERT INTO status_pedido (DESCRICAO) VALUES ('Em preparação');
+INSERT INTO status_pedido (DESCRICAO) VALUES ('Pronto');
+INSERT INTO status_pedido (DESCRICAO) VALUES ('Finalizado');
+INSERT INTO status_pedido (DESCRICAO) VALUES ('Cancelado');
 
-INSERT INTO status_pagamento (ID_STATUS, DESCRICAO)
-VALUES (1, 'Pendente');
-INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
-VALUES (2, 'Aprovado');
-INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
-VALUES (3, 'Rejeitado');
-INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
-VALUES (4, 'Em Análise');
-INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
-VALUES (5, 'Estornado');
-INSERT INTO StatusPagamento (ID_STATUS, DESCRICAO)
-VALUES (6, 'Cancelado');
+INSERT INTO status_pagamento (DESCRICAO) VALUES ('Pendente');
+INSERT INTO status_pagamento (DESCRICAO) VALUES ('Aprovado');
+INSERT INTO status_pagamento (DESCRICAO) VALUES ('Rejeitado');
+INSERT INTO status_pagamento (DESCRICAO) VALUES ('Em Análise');
+INSERT INTO status_pagamento (DESCRICAO) VALUES ('Estornado');
+INSERT INTO status_pagamento (DESCRICAO) VALUES ('Cancelado');

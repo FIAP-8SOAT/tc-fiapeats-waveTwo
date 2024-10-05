@@ -15,7 +15,6 @@ import java.io.Serializable;
 public class StatusPagamentoEntity implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ID_STATUS", nullable = false)
   private Long idStatus;
 
