@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.*;
 
 @Entity
-@Table(name = "StatusPedido")
+@Table(name = "status_pedido")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
