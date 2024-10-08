@@ -1,5 +1,7 @@
 package br.com.fiap.fiapeats.adapter.presenters;
 
+import br.com.fiap.fiapeats.domain.enums.StatusPagamento;
+import br.com.fiap.fiapeats.domain.enums.StatusPedido;
 import br.com.fiap.fiapeats.usecases.dtos.CriarPedidoResponse;
 import br.com.fiap.fiapeats.usecases.dtos.ListarPedidosResponse;
 import br.com.fiap.fiapeats.domain.entities.Pedido;
@@ -28,11 +30,11 @@ public class PedidoPresenter {
         for (Pedido pedido : pedidos) {
             response.add(new ListarPedidosResponse(pedido.getId().toString(),
                     pedido.getCliCpf(),
-                    obterDescricaoDoStatusPorCodigo(pedido.getIdStatus()),
+                    StatusPedido.obterDescricaoPorCodigo(pedido.getIdStatus()),
                     pedido.getValor(),
                     pedido.getTempoEspera(),
                     pedido.getDataHoraCriacao(),
-                    obterDescricaoDoStatusDePagamentoPorCodigo(pedido.getIdPagamento()),
+                    StatusPagamento.obterDescricaoPorCodigo(pedido.getIdPagamento()),
                     pedido.getProdutos().stream().map(ProdutoResponse::new).toList()));
         }
 
@@ -43,83 +45,14 @@ public class PedidoPresenter {
             return new ListarPedidosResponse(
                     pedido.getId().toString(),
                     pedido.getCliCpf(),
-                    obterDescricaoDoStatusPorCodigo(pedido.getIdStatus()),
+                    StatusPedido.obterDescricaoPorCodigo(pedido.getIdStatus()),
                     pedido.getValor(),
                     pedido.getTempoEspera(),
                     pedido.getDataHoraCriacao(),
-                    obterDescricaoDoStatusDePagamentoPorCodigo(pedido.getIdPagamento()),
+                    StatusPagamento.obterDescricaoPorCodigo(pedido.getIdPagamento()),
                     pedido.getProdutos().stream().map(ProdutoResponse::new).collect(Collectors.toList())
             );
     }
-
-    private static String obterDescricaoDoStatusDePagamentoPorCodigo(Long codigoStatus) {
-        String status;
-
-        if (codigoStatus == null) {
-            return "Código de status inválido";
-        }
-
-        switch (codigoStatus.intValue()) {
-            case 1:
-                status = "PENDENTE";
-                break;
-            case 2:
-                status = "APROVADO";
-                break;
-            case 3:
-                status = "REJEITADO";
-                break;
-            case 4:
-                status = "EM ANÁLISE";
-                break;
-            case 5:
-                status = "ESTORNADO";
-                break;
-            case 6:
-                status = "CANCELADO";
-                break;
-            default:
-                status = "STATUS DESCONHECIDO";
-                break;
-        }
-
-        return status;
-    }
-
-    private static String obterDescricaoDoStatusPorCodigo(Long codigoStatus) {
-        String status;
-
-        if (codigoStatus == null) {
-            return "Código de status inválido";
-        }
-
-        switch (codigoStatus.intValue()) {
-            case 1:
-                status = "PENDENTE";
-                break;
-            case 2:
-                status = "RECEBIDO";
-                break;
-            case 3:
-                status = "EM PREPARAÇÃO";
-                break;
-            case 4:
-                status = "PRONTO";
-                break;
-            case 5:
-                status = "FINALIZADO";
-                break;
-            case 6:
-                status = "CANCELADO";
-                break;
-            default:
-                status = "STATUS DESCONHECIDO";
-                break;
-        }
-
-        return status;
-    }
-
 
 
 }
