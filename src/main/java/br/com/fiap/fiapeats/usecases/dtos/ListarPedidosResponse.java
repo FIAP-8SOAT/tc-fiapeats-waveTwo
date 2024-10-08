@@ -7,14 +7,14 @@ import java.util.List;
 public class ListarPedidosResponse {
     private String id;
     private String cliCpf;
-    private Long idStatus;
+    private String idStatus;
     private BigDecimal valor;
     private int tempoEspera;
     private LocalDateTime dataHoraCriacao;
-    private Long idPagamento;
+    private String idPagamento;
     private List<ProdutoResponse> produtos;
 
-    public ListarPedidosResponse(String id, String cliCpf, Long idStatus, BigDecimal valor, int tempoEspera, LocalDateTime dataHoraCriacao,  Long idPagamento, List<ProdutoResponse> produtos) {
+    public ListarPedidosResponse(String id, String cliCpf, String idStatus, BigDecimal valor, int tempoEspera, LocalDateTime dataHoraCriacao,  String idPagamento, List<ProdutoResponse> produtos) {
         this.id = id;
         this.cliCpf = cliCpf;
         this.idStatus = idStatus;
@@ -41,11 +41,11 @@ public class ListarPedidosResponse {
         this.cliCpf = cliCpf;
     }
 
-    public Long getIdStatus() {
+    public String getIdStatus() {
         return idStatus;
     }
 
-    public void setIdStatus(Long idStatus) {
+    public void setIdStatus(String idStatus) {
         this.idStatus = idStatus;
     }
 
@@ -81,11 +81,11 @@ public class ListarPedidosResponse {
         this.produtos = produtos;
     }
 
-    public Long getIdPagamento() {
+    public String getIdPagamento() {
         return idPagamento;
     }
 
-    public void setIdPagamento(Long idPagamento) {
+    public void setIdPagamento(String idPagamento) {
         this.idPagamento = idPagamento;
     }
 }

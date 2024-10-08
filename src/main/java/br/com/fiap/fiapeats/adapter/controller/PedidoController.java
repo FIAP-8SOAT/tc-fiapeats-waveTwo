@@ -52,13 +52,13 @@ public class PedidoController {
 
         Pedido pedido = listarPedidosPorIdUseCase.listarPedidoPorId(idPedido);
 
-        return PedidoPresenter.toListarPedidosResponse(pedido);
+        return PedidoPresenter.toListarPedidoResponse(pedido);
     }
 
     public ListarPedidosResponse alterarStatusPedido(String id, AlterarStatusPedidoRequest status) {
 
         Pedido pedido = alterarStatusPedidoUseCase.alterarStatusPedido(id, status.getStatus());
 
-        return PedidoPresenter.toListarPedidosResponse(pedido);
+        return PedidoPresenter.toListarPedidoResponse(pedido);
     }
 }
